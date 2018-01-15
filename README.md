@@ -43,6 +43,16 @@ docker run -ti --rm \
            -v `pwd`:/workspace \
            fgrehm/eclipse:v4.4.1
 ```
+I use the following codes to configurate
+```sh
+IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
+docker run -ti --rm \
+           -e DISPLAY=$IP:0\
+           -v /tmp/.X11-unix:/tmp/.X11-unix \
+           -v ~/docker-eclipse:/home/developer  \
+            -v ~/docker-eclipse:/workspace \
+            fgrehm/eclipse:v4.4.1
+```
 
 ## Help! I started the container but I don't see the Eclipse screen
 
